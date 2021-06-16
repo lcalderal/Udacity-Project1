@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="btn_width">130dp</dimen>
+    <dimen name="btn_height">50dp</dimen>
+    <dimen name="welcome_width">335dp</dimen>
+    <dimen name="welcome_height">240dp</dimen>
+</resources>
