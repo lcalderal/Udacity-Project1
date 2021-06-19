@@ -8,46 +8,68 @@
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.example.shoestore.screens.login.LoginFragment"
-        android:label="fragment_login"
-        tools:layout="@layout/login_fragment" >
+        android:label="@string/label_fragment_login"
+        tools:layout="@layout/login_fragment">
         <action
             android:id="@+id/action_loginFragment_to_welcomeFragment"
-            app:destination="@id/welcomeFragment" />
+            app:destination="@id/instructionsFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:launchSingleTop="true"
+            app:popEnterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_left" />
     </fragment>
     <fragment
-        android:id="@+id/welcomeFragment"
+        android:id="@+id/instructionsFragment"
         android:name="com.example.shoestore.screens.welcome.WelcomeFragment"
-        android:label="fragment_welcome"
-        tools:layout="@layout/welcome_fragment" >
+        android:label="@string/label_fragment_welcome"
+        tools:layout="@layout/welcome_fragment">
         <action
             android:id="@+id/action_welcomeFragment_to_instructionsFragment"
-            app:destination="@id/instructionsFragment" />
+            app:destination="@id/instructionsFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:launchSingleTop="true"
+            app:popEnterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_left" />
     </fragment>
     <fragment
         android:id="@+id/instructionsFragment"
         android:name="com.example.shoestore.screens.instructions.InstructionsFragment"
-        android:label="fragment_instructions"
-        tools:layout="@layout/instructions_fragment" >
+        android:label="@string/label_fragment_instructions"
+        tools:layout="@layout/instructions_fragment">
         <action
             android:id="@+id/action_instructionsFragment_to_listFragment"
-            app:destination="@id/listFragment" />
+            app:destination="@id/instructionsFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_left" />
     </fragment>
     <fragment
-        android:id="@+id/listFragment"
-        android:name="com.example.shoestore.screens.list.ListFragment"
-        android:label="fragment_list"
-        tools:layout="@layout/list_fragment" >
+        android:id="@+id/instructionsFragment"
+        android:name="com.example.shoestore.screens.list.ShoeListFragment"
+        android:label="@string/label_fragment_list"
+        tools:layout="@layout/shoe_list_fragment">
         <action
-            android:id="@+id/action_listFragment_to_addShoeFragment2"
-            app:destination="@id/addShoeFragment" />
+            android:id="@+id/action_shoeListFragment_to_detailFragment"
+            app:destination="@id/detailFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_left" />
     </fragment>
     <fragment
-        android:id="@+id/addShoeFragment"
-        android:name="com.example.shoestore.screens.addshoe.AddShoeFragment"
-        android:label="fragment_add_shoe"
-        tools:layout="@layout/add_shoe_fragment" >
+        android:id="@+id/detailFragment"
+        android:name="com.example.shoestore.screens.detail.DetailFragment"
+        android:label="@string/label_detail"
+        tools:layout="@layout/detail_fragment" >
         <action
-            android:id="@+id/action_addShoeFragment2_to_listFragment"
-            app:destination="@id/listFragment" />
+            android:id="@+id/action_detailFragment_to_shoeListFragment"
+            app:destination="@id/instructionsFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_left" />
     </fragment>
 </navigation>
