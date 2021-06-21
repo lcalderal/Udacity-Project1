@@ -14,7 +14,7 @@
     <string name="label_fragment_login">Login</string>
     <string name="label_fragment_welcome">Welcome Shoe Store</string>
     <string name="label_fragment_instructions">Instructions</string>
-    <string name="label_fragment_list">Shoes List</string>
+    <string name="label_fragment_list">Shoe List</string>
     <string name="label_fragment_add_shoe">Add Shoe</string>
     <string name="menu_detail">Detail</string>
     <string name="menu_logout">Logout</string>
