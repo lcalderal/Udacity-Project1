@@ -64,6 +64,15 @@
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_right"
             app:popExitAnim="@anim/slide_out_left" />
+        <argument
+            android:name="shoeName"
+            app:argType="string" />
+        <argument
+            android:name="company"
+            app:argType="string" />
+        <argument
+            android:name="size"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/detailFragment"
