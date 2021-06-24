@@ -7,12 +7,21 @@
     <string name="new_login">New Login</string>
     <string name="btn_login">Login</string>
     <string name="welcome">Welcome!</string>
-    <string name="welcome_text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</string>
+    <string name="welcome_text">Welcome to Shoe Store! Click SKIP to read the instructions.</string>
     <string name="skip">Skip</string>
     <string name="title_instructions">Instructions</string>
+    <string name="desc_instructions">
+        If you are not logged:\n
+        1 - Insert you login and password, and click Login or New Login\n\n
+
+        If you are logged:\n
+        1 - Click in Shoe List button to see the list of shoes; \n
+        2 - You can logout accessing the menu at the 3 dots at the top of the screen; \n
+        3 - For add a new shoe, you need to click a plus button in the Shoe List scren \n
+        4 - In the Detail screen, insert the shoe information and click Save</string>
     <string name="shoe_list">Shoe List</string>
     <string name="label_fragment_login">Login</string>
-    <string name="label_fragment_welcome">Welcome Shoe Store</string>
+    <string name="label_fragment_welcome">Welcome</string>
     <string name="label_fragment_instructions">Instructions</string>
     <string name="label_fragment_list">Shoe List</string>
     <string name="label_fragment_add_shoe">Add Shoe</string>

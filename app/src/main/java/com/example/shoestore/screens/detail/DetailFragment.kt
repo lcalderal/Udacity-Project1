@@ -32,8 +32,8 @@ class DetailFragment : Fragment() {
 
         viewModel.createNewShoe()
 
-        viewModel.eventClose.observe(viewLifecycleOwner, Observer { closeScreen ->
-            closeScreen?.let {
+        viewModel.eventClose.observe(viewLifecycleOwner, Observer { onClose ->
+            onClose?.let {
                 if (it) {
                     findNavController().navigateUp()
                     viewModel.onEventCloseCompleted()

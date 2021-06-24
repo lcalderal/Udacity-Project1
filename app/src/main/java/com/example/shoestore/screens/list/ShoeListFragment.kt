@@ -10,6 +10,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.shoestore.R
@@ -41,7 +42,7 @@ class ShoeListFragment : Fragment() {
         })
 
         binding.floatingActionButton.setOnClickListener{
-            findNavController().navigate(ShoeListFragmentDirections.actionShoeListFragmentToDetailFragment())
+            it.findNavController().navigate(ShoeListFragmentDirections.actionShoeListFragmentToDetailFragment())
         }
 
         // Inflate the layout for this fragment
@@ -52,7 +53,6 @@ class ShoeListFragment : Fragment() {
         shoes.forEach { showShoeInfo(it) }
     }
 
-
     private fun showShoeInfo(shoe: Shoe){
         val itemShoeBinding: ItemShoeBinding = DataBindingUtil.inflate(layoutInflater, R.layout.item_shoe, null, false)
 
@@ -62,16 +62,4 @@ class ShoeListFragment : Fragment() {
 
         binding.linearLayout.addView(itemShoeBinding.root)
     }
-
-//    private fun displayShoe(shoe: Shoe) {
-//        val listItemShoeBinding: ListItemShoeBinding = DataBindingUtil.inflate(layoutInflater, R.layout.list_item_shoe, null, false)
-//
-//        listItemShoeBinding.nameTextView.text = getString(R.string.string_value, "Shoe name:", shoe.name)
-//        listItemShoeBinding.companyTextView.text = getString(R.string.string_value, "Company name:", shoe.company)
-//        listItemShoeBinding.sizeTextView.text = getString(R.string.double_value, "Shoe size:", shoe.size)
-//        listItemShoeBinding.descriptionTextView.text = getString(R.string.string_value, "Description:", shoe.description)
-//
-//        binding.linearLayout.addView(listItemShoeBinding.root)
-//    }
-
 }
