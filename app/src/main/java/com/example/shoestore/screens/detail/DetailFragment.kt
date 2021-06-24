@@ -7,10 +7,15 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.example.shoestore.R
 import com.example.shoestore.databinding.DetailFragmentBinding
+import com.example.shoestore.screens.list.ShoeListFragmentArgs
+import com.example.shoestore.screens.list.ShoeListViewModel
+import com.example.shoestore.screens.list.ShoeListViewModelFactory
 
 class DetailFragment : Fragment() {
 
@@ -26,6 +31,8 @@ class DetailFragment : Fragment() {
                     container,
                     false)
 
+
+
         binding.btnSave.setOnClickListener {
             //TODO: COLOCAR A FUNÇÃO DE ADICIONAR UM ITEM NA LISTA4
 
@@ -35,6 +42,8 @@ class DetailFragment : Fragment() {
 
             findNavController().navigate(DetailFragmentDirections.actionDetailFragmentToShoeListFragment(currentName, currentCompany, currentSize))
         }
+
+
 
 
 //        binding.btnCancel.setOnClickListener {

@@ -1,15 +1,16 @@
 package com.example.shoestore.screens.list
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
 class ShoeListViewModel(finalName: String, finalCompany: String, finalSize: String) : ViewModel() {
 
-    private var shoeListAdd = ArrayList<String>()
+//    private var temp: MutableList<String>
 
-    private var _shoeList = MutableLiveData<List<String>>()
-    val shoeList : LiveData<List<String>>
+    private var _shoeList = MutableLiveData<MutableList<String>>()
+    val shoeList : LiveData<MutableList<String>>
         get() = _shoeList
 
     private val _shoeName = MutableLiveData<String>()
@@ -26,17 +27,37 @@ class ShoeListViewModel(finalName: String, finalCompany: String, finalSize: Stri
 
 
     init {
-        _shoeList.value = listOf(finalName, finalCompany, finalSize)
-        _shoeName.value = finalName
-        _company.value = finalCompany
-        _size.value = finalSize
 
+        addShoe(finalName, finalCompany, finalSize)
+//        _shoeName.value = finalName
+//        _company.value = finalCompany
+//        _size.value = finalSize
     }
 
-//
-//    fun addShoe(shoe: String, company: String, size: String){
-//        _shoeList.value = listOf()
-//    }
+
+    fun addShoe(name: String, company: String, size: String){
+        var temp = mutableListOf<String>()
+
+        Log.i("-----------", "Valor da showlist: " + _shoeList.value.toString())
+
+        if (!(name == "" && company == "" && size == "")) {
+            if (_shoeList.value.isNullOrEmpty()){
+                Log.i("------------", "ENTROU NO IF")
+                temp.add(name)
+                temp.add(company)
+                temp.add(size)
+                _shoeList.value = temp
+            }
+            else {
+                temp = _shoeList.value!!
+                temp.add(name)
+                temp.add(company)
+                temp.add(size)
+
+                _shoeList.value = temp
+            }
+        }
+    }
 
 }
 
