@@ -7,19 +7,22 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.shoestore.R
+import com.example.shoestore.ShoeViewModel
+import com.example.shoestore.databinding.ItemShoeBinding
 import com.example.shoestore.databinding.ShoeListFragmentBinding
+import com.example.shoestore.model.Shoe
 
 class ShoeListFragment : Fragment() {
 
     private lateinit var binding: ShoeListFragmentBinding
 
-    private lateinit var viewModel: ShoeListViewModel
-    private lateinit var viewModelFactory: ShoeListViewModelFactory
+    private val viewModel: ShoeViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -31,18 +34,11 @@ class ShoeListFragment : Fragment() {
                     container,
                     false)
 
-        val shoeListFragmentArgs by navArgs<ShoeListFragmentArgs>()
-
-        viewModelFactory = ShoeListViewModelFactory(shoeListFragmentArgs.shoeName, shoeListFragmentArgs.company, shoeListFragmentArgs.size)
-        viewModel = ViewModelProvider(this, viewModelFactory).get(ShoeListViewModel::class.java)
-
-        binding.shoeListViewModel = viewModel
-
-        binding.setLifecycleOwner(this)
-
-//        Toast.makeText(context, "Valor passado: " + viewModel.shoeName.value.toString(), Toast.LENGTH_SHORT).show()
-//        Toast.makeText(context, "Valor da lista: " + viewModel.shoeList.value.toString(), Toast.LENGTH_SHORT).show()
-        Toast.makeText(context, "Valor da lista: " + viewModel.shoeList.value.toString(), Toast.LENGTH_SHORT).show()
+        viewModel.shoeList.observe(viewLifecycleOwner, Observer { shoeList ->
+            shoeList?.let {
+                showShoes(it)
+            }
+        })
 
         binding.floatingActionButton.setOnClickListener{
             findNavController().navigate(ShoeListFragmentDirections.actionShoeListFragmentToDetailFragment())
@@ -52,14 +48,30 @@ class ShoeListFragment : Fragment() {
         return binding.root
     }
 
-//    fun createTv(shoeName: String){
-//        val myLayout = LinearLayout(context).findViewById<LinearLayout>(R.id.linearLayout)
-//        val tv = TextView(context)
-////        val linearLayout = LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT)
+    private fun showShoes (shoes: List<Shoe>) {
+        shoes.forEach { showShoeInfo(it) }
+    }
+
+
+    private fun showShoeInfo(shoe: Shoe){
+        val itemShoeBinding: ItemShoeBinding = DataBindingUtil.inflate(layoutInflater, R.layout.item_shoe, null, false)
+
+        itemShoeBinding.txtFinalName.text = getString(R.string.shoe_name) + shoe.shoeName
+        itemShoeBinding.txtFinalSize.text = getString(R.string.shoe_size) + shoe.size
+        itemShoeBinding.txtFinalCompany.text = getString(R.string.company) + shoe.company
+
+        binding.linearLayout.addView(itemShoeBinding.root)
+    }
+
+//    private fun displayShoe(shoe: Shoe) {
+//        val listItemShoeBinding: ListItemShoeBinding = DataBindingUtil.inflate(layoutInflater, R.layout.list_item_shoe, null, false)
 //
-//        tv.text = shoeName
+//        listItemShoeBinding.nameTextView.text = getString(R.string.string_value, "Shoe name:", shoe.name)
+//        listItemShoeBinding.companyTextView.text = getString(R.string.string_value, "Company name:", shoe.company)
+//        listItemShoeBinding.sizeTextView.text = getString(R.string.double_value, "Shoe size:", shoe.size)
+//        listItemShoeBinding.descriptionTextView.text = getString(R.string.string_value, "Description:", shoe.description)
 //
-//        myLayout.addView(tv)
+//        binding.linearLayout.addView(listItemShoeBinding.root)
 //    }
 
 }

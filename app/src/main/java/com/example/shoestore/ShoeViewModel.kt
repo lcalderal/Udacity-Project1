@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.shoestore.model.Shoe
 
-class MainViewModel : ViewModel() {
+class ShoeViewModel : ViewModel() {
 
     var currentShoe: Shoe? = null
 
@@ -29,7 +29,7 @@ class MainViewModel : ViewModel() {
     val eventGoToShoeList: LiveData<Boolean>
         get() = _eventGoToShoeList
 
-    fun close() {
+    fun onCancel() {
         _eventClose.value = true
     }
 
@@ -37,27 +37,27 @@ class MainViewModel : ViewModel() {
         _eventClose.value = null
     }
 
-    fun goToWelcomeScreen() {
+    fun goToWelcome() {
         _eventGoToWelcome.value = true
     }
 
-    fun onEventGoToWelcomeScreenCompleted() {
+    fun onEventGoToWelcomeCompleted() {
         _eventGoToWelcome.value = null
     }
 
-    fun goToInstructionScreen() {
+    fun goToInstructions() {
         _eventGoToInstruction.value = true
     }
 
-    fun onEventGoToInstructionScreenCompleted() {
+    fun onEventGoToInstructionsCompleted() {
         _eventGoToInstruction.value = null
     }
 
-    fun goToShoeListScreen() {
+    fun goToShoeList() {
         _eventGoToShoeList.value = true
     }
 
-    fun onEventGoToShoeListScreenCompleted() {
+    fun onEventGoToShoeListCompleted() {
         _eventGoToShoeList.value = null
     }
 
@@ -81,5 +81,17 @@ class MainViewModel : ViewModel() {
 
     fun onSave() {
         val temp = mutableListOf<Shoe>()
+
+        _shoeList.value?.let {
+            temp.addAll(it)
+        }
+
+        currentShoe?.let {
+            temp.add(it)
+        }
+
+        _shoeList.value = temp
+
+        _eventClose.value = true
     }
 }

@@ -6,16 +6,20 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.Observer
 import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.example.shoestore.R
+import com.example.shoestore.ShoeViewModel
 import com.example.shoestore.databinding.LoginFragmentBinding
 
 
 class LoginFragment : Fragment() {
 
     private lateinit var binding: LoginFragmentBinding
+    private val viewModel: ShoeViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -26,13 +30,16 @@ class LoginFragment : Fragment() {
                     container,
                     false)
 
-        binding.btnLogin.setOnClickListener {
-           findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToWelcomeFragment())
-        }
+        binding.shoeViewModel = viewModel
 
-        binding.btnNewLogin.setOnClickListener {
-            findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToWelcomeFragment())
-        }
+        viewModel.eventGoToWelcome.observe(viewLifecycleOwner, Observer { goToWelcome ->
+            goToWelcome?.let {
+                if (it) {
+                    findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToWelcomeFragment())
+                    viewModel.onEventGoToWelcomeCompleted()
+                }
+            }
+        })
 
         return binding.root
     }

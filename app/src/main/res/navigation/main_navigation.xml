@@ -64,27 +64,10 @@
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_right"
             app:popExitAnim="@anim/slide_out_left" />
-        <argument
-            android:name="shoeName"
-            app:argType="string" />
-        <argument
-            android:name="company"
-            app:argType="string" />
-        <argument
-            android:name="size"
-            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/detailFragment"
         android:name="com.example.shoestore.screens.detail.DetailFragment"
         android:label="@string/label_detail"
-        tools:layout="@layout/detail_fragment" >
-        <action
-            android:id="@+id/action_detailFragment_to_shoeListFragment"
-            app:destination="@id/shoeListFragment"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_right"
-            app:popExitAnim="@anim/slide_out_left" />
-    </fragment>
+        tools:layout="@layout/detail_fragment" />
 </navigation>

@@ -7,14 +7,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.example.shoestore.R
+import com.example.shoestore.ShoeViewModel
 import com.example.shoestore.databinding.InstructionsFragmentBinding
 import com.example.shoestore.screens.welcome.WelcomeFragmentDirections
 
 class InstructionsFragment : Fragment() {
 
     private lateinit var binding: InstructionsFragmentBinding
+    private val viewModel: ShoeViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -26,10 +30,18 @@ class InstructionsFragment : Fragment() {
             container,
             false)
 
+        binding.shoeViewModel = viewModel
 
-        binding.btnShoeList.setOnClickListener {
-            findNavController().navigate(InstructionsFragmentDirections.actionInstructionsFragmentToShoeListFragment("", "", ""))
-        }
+        viewModel.eventGoToShoeList.observe(viewLifecycleOwner, Observer { goToShoeList ->
+            goToShoeList?.let {
+                if (it){
+                    findNavController().navigate(InstructionsFragmentDirections.actionInstructionsFragmentToShoeListFragment())
+                    viewModel.onEventGoToShoeListCompleted()
+                }
+            }
+        })
+
+
 
         // Inflate the layout for this fragment
         return binding.root
