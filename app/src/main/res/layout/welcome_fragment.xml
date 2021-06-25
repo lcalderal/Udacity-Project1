@@ -5,6 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".screens.welcome.WelcomeFragment">
 
+    <!-- On this screen, only the ContraintLayout was used, because there was no need to use other types of layouts for this screen -->
+
     <data>
         <variable
             name="shoeViewModel"

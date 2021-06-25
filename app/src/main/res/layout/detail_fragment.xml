@@ -4,6 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".screens.detail.DetailFragment">
 
+    <!--On this screen only the ConstraintLayout was used, because as it is a registration screen, the layout sounds perfectly -->
+
     <data>
         <variable
             name="shoeViewModel"

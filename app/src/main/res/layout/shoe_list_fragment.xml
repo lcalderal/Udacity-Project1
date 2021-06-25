@@ -4,6 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".screens.list.ShoeListFragment">
 
+    <!-- ConstraintLayout is used as the parent layout, inside it a LinearLayout is used inside a ScrollView, so that all shoe information is grouped vertically -->
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">

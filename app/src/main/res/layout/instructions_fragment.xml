@@ -5,6 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".screens.instructions.InstructionsFragment">
 
+    <!-- This screen also only used the ContraintLayout, because it has the same concept as the "welcome_fragment" screen -->
+
     <data>
         <variable
             name="shoeViewModel"

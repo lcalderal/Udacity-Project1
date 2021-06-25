@@ -4,6 +4,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools" >
 
+    <!-- Only the ConstraintLayout was chosen to group all views, because the layout sounds perfect for this screen design -->
+
     <data>
         <variable
             name="shoeViewModel"
